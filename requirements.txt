@@ -1,0 +1,6 @@
+mysql-connector-python>=8.0.0
+python-dotenv>=1.0.0
+numpy>=1.22.0
+
+# Optional for nicer CLI in the future
+# click>=8.0.0
