@@ -84,3 +84,15 @@ If the remote already exists, set the URL then push:
 If push fails because of authentication, you'll need to: use an HTTPS PAT (personal access token) with `git push` or configure SSH keys and use an SSH remote URL. I tried to push from this environment; if it failed I included the error below in the run output so you can follow up locally.
 
 That's it — the code is ready to be added to your GitHub repo. Let me know if you want me to also create a simple GitHub Actions workflow that runs a quick lint/test when you push.
+
+CI (GitHub Actions)
+
+[![CI](https://github.com/johndutra1/python_to_sql/actions/workflows/ci.yml/badge.svg)](https://github.com/johndutra1/python_to_sql/actions/workflows/ci.yml)
+
+This repository includes a small GitHub Actions workflow (`.github/workflows/ci.yml`) that runs on push and pull requests to `main`. It:
+
+- Tests on Python 3.11 and 3.12.
+- Installs dependencies from `requirements.txt`.
+- Executes a smoke run of the runner with writes disabled (it runs `python runner.py 1` with `DB_WRITE=false` and `CSV_WRITE=false`) to ensure imports and runtime start-up are OK.
+
+This workflow is intentionally side-effect free (no DB connections, no CSV writes). It provides quick feedback that the code boots and basic dependencies are resolvable.
