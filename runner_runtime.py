@@ -17,9 +17,12 @@ import argparse
 import signal
 import sys
 import time
-from generator import generate_records
 from db_writer import write_record_to_db
 from csv_writer import write_record_to_csv
+
+## only have one of these active at a time
+## from generator import generate_records
+from generator_v2 import generate_records
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("runner_runtime")

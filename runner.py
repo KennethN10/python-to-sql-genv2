@@ -10,9 +10,13 @@ import json
 import logging
 import sys
 import time ## added to measure time
-from generator import generate_records
 from db_writer import write_record_to_db
 from csv_writer import write_record_to_csv
+
+## only have one of these active at a time
+from generator import generate_records
+## from generator_v2 import generate_records
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("runner")
@@ -44,7 +48,7 @@ def main(num_records: int = -1):
     # ## After loop, show total and average DB write times
     if i > 0:
         avg_db_time = total_db_time / i
-        logger.info(f"✅ Wrote {i} records.")
+      ##  logger.info(f"✅ Wrote {i} records.")  
         logger.info(f"⏱️ Total DB transfer time: {total_db_time:.4f} sec")
         logger.info(f"⚙️ Average DB write time per record: {avg_db_time:.4f} sec")
 
