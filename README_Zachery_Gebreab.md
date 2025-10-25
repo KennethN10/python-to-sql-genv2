@@ -79,3 +79,25 @@ Key impacts:
 - Seamless compatibility for the transition to the **runtime-based pipeline (`runner_runtime.py`)**.
 
 Author: **Zachery Gebreab**
+
+---
+
+## 🧪 Update — October 2025 (A/B Testing & Data Realism)
+
+**Author:** Zachery Gebreab  
+
+This update introduces **`generator_v2.py`** and **enhanced runner integration** to support A/B testing between the original random data generator and a new, more realistic data simulation model.
+
+### 🔄 New Files
+- **`generator_v2.py`** – Generates more realistic traffic data:  
+  - Each PMGID now produces 3–5 readings per cycle to simulate multiple cars per sensor.  
+  - Locations are grouped to represent specific road segments rather than purely random coordinates.  
+  - Framework ready for future modeling of time-dependent speed patterns (e.g., slower speeds during rush hours).  
+
+### ⚙️ Runner Integration
+- Both **`runner.py`** and **`runner_runtime.py`** now support toggling between data generators:
+  ```python
+  ## only have one of these active at a time
+  ## from generator import generate_records
+  from generator_v2 import generate_records
+
