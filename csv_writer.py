@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 CSV_WRITE = os.getenv("CSV_WRITE", "true").lower() == "true"
-CSV_PATH = os.getenv("CSV_PATH", "data/sensor_readings.csv")
+CSV_PATH = os.getenv("CSV_PATH", "data/sensor_readings_v1.csv")
 
 
 def _ensure_parent(path: Path) -> None:
